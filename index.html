@@ -2502,6 +2502,11 @@ function mdlChar(key){
     D.att[pn].forEach(function(jn){ var g=mdlPart(D,pn); if(D.pos[pn]) g.position.fromArray(D.pos[pn]); jt[jn].add(g); (u.parts[pn]=u.parts[pn]||[]).push(g); if(pn==='eyeL'||pn==='eyeR') u.eyes.push(g); }); });
   return m;
 }
+var _mimB=makeItemModel;
+makeItemModel=function(id){
+  var D=typeof MDL!=='undefined'&&MDL['it_'+id]; if(!D) return _mimB(id);
+  var g=mdlPart(D,'m'); g.traverse(function(o){ if(o.isMesh) o.castShadow=true; }); return g;
+};
 if(typeof MDL!=='undefined'){
   Object.keys(MDL).forEach(function(k){ if(CH[k]) BUILD[k]=function(){ return mdlChar(k); }; });
   BUILD.alien=function(){
