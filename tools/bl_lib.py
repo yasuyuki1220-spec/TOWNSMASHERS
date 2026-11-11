@@ -97,8 +97,11 @@ def chain(pname, col, pts, r0, r1, seg=8):
     for i in range(n):
         a = r0 + (r1 - r0) * i / n; b = r0 + (r1 - r0) * (i + 1) / n; add(pname, col, cap(pts[i], pts[i + 1], a, b, seg, 2))
 
-def end(j=None, a=None, scale=2.0):
-    m = CUR; dg = bpy.context.evaluated_depsgraph_get(); parts = {}; nv = 0
+def end(j=None, a=None, scale=None):
+    m = CUR
+    if scale is None:
+        mx = max([abs(c) for ob, _ in m['objs'] for v in ob.data.vertices for c in v.co] + [1.0]); scale = math.ceil(mx * 1.3 * 2) / 2
+    dg = bpy.context.evaluated_depsgraph_get(); parts = {}; nv = 0
     for ob, pname in m['objs']:
         me = ob.evaluated_get(dg).to_mesh(); me.calc_loop_triangles(); mt = ob.data.materials[0]; piv = m['piv'][pname]
         d = parts.setdefault(pname, {}).setdefault((mt['hex'], mt['kind'], round(mt['op'], 2)), {'map': {}, 'p': [], 'n': [], 'i': []})

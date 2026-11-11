@@ -108,3 +108,9 @@
 ## 開発用
 - URL に `?debug` で開発用フック（`window.__B`）が有効になる
 - URL に `?peer=127.0.0.1:9000` で、ローカルの PeerJS サーバー（`npx peerjs --port 9000`）を使う
+
+## 3Dモデル（Blender）
+キャラ15体・アイテム・ステージの小道具・ギミックの形は Blender で作り、`models.js` に書き出している。
+- 作り直すとき: `pip install bpy` のあと `python3 tools/build_models.py`（`tools/models_chars.py` / `models_items.py` / `models_props.py` を編集）
+- ゲームは `index.html` と `models.js` の2ファイルで動く。`./build.sh` の zip にも `models.js` が入る
+- `models.js` がないときは、以前のコード製の形で表示される箇所と、表示できない箇所（木・ジャングルジム・ギミック）がある

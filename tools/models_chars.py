@@ -385,4 +385,20 @@ def alien():
     for k, c in EYE_C.items(): part(k, (c[0], HEADY + c[1], c[2]), ['head'], c)
     end({'hipx': HIPX, 'hip': round(HIP, 4), 'thigh': THIGH, 'heady': HEADY, 'shx': SHX, 'shy': SHY, 'uarm': UARM, 'handy': HANDY, 'hand': HANDY, 'hunch': .22, 'hs': 1.3, 'skin': 0xa9bccb}, ANCH)
 
-ALL = [jiji, baba, salary, career, monkey, dog, alien, zombie, dino, panda, sumo, penguin, robot, ghost, kid]
+def teacher():
+    S = kit('teacher', skin=0xf1c9a5, top=0xf4f1e8, hips=0x4a5a7a, leg=0x4a5a7a, shoe=0x8a5a3a, hunch=.1); H = S['H']
+    hair(S, 0x3a2a1a, 1.06, lambda z: .14 if z < .08 else .42)
+    for p in ((-.2, .5, .05), (.2, .5, .05), (0, .54, -.1), (-.26, .3, -.1), (.26, .3, -.1), (0, .3, -.28)): add('head', 0x3a2a1a, ell(H(p), (.12, .1, .12), 8, 5))
+    hair(S, 0x3a6ad0, 1.1, lambda z: .44); add('head', 0x3a6ad0, ell(H((0, .3, -.33)), (.08, .06, .05), 6, 4))
+    eyes(S, .105, .27, (.03, .038, .018))
+    for s in (-1, 1):
+        p, R = onhead(S, s * .105, .27, 1.04); add('head', 0xc8372d, tor(p, .062, .01, tuple(R @ Vector((0, 0, 1))), 14, 5)); fe(S, 0x3a2a1a, s * .1, .37, (.05, .012, .012), s * .3)
+    add('head', 0xc8372d, cap(H((-.045, .275, .29)), H((.045, .275, .29)), .009, .009, 5, 1)); cheeks(S, 0xf09a90, .2, .18); mouth(S, 0xb04a44, .13, (.03, .016, .01))
+    z = lambda y: chestz(S, y)
+    add('torso', 0xffffff, lat([(S['hip'] - .2, 0), (S['hip'] - .2, .29), (S['hip'] + .1, .26), (S['hip'] + .11, 0)], 16, sz=.86)); add('torso', 0x3a6ad0, tor((0, .9, 0), S['tr'](.9) + .01, .025, sz=S['td'], seg=18))
+    add('torso', 0xffd23a, ell((.1, 1.15, z(1.15) + .005), (.035, .035, .012), 8, 4))
+    e = S['E1']; hy = S['handy']
+    add('ext1', 0x30303a, cap(e((0, hy + .02, .02)), e((0, hy - .2, .02)), .035, .035, 8, 1)); add('ext1', 0xb0b8c0, cone(e((0, hy - .3, .02)), e((0, hy - .18, .02)), .07, 10, .035)); add('ext1', B(0xfff4a0), ell(e((0, hy - .3, .02)), (.06, .01, .06), 10, 3))
+    done(S)
+
+ALL = [teacher, jiji, baba, salary, career, monkey, dog, alien, zombie, dino, panda, sumo, penguin, robot, ghost, kid]
