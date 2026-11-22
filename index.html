@@ -216,7 +216,7 @@ input.tx:focus-visible{outline:2px solid var(--warn)}
     <div class="row2">
       <div class="lft">
         <div id="clock">3:00</div>
-        <div class="minis"><button class="mini" id="btnPause">一時停止</button><button class="mini" id="btnMute">音:全部</button></div>
+        <div class="minis"><button class="mini" id="btnPause">一時停止</button><button class="mini" id="btnMute">音:全部</button><button class="mini" id="btnCam">視点:背後</button></div>
         <div id="held">手ぶら</div>
       </div>
       <div class="rcol"><canvas id="radar" width="118" height="88"></canvas><div id="feed"></div></div>
@@ -305,7 +305,7 @@ input.tx:focus-visible{outline:2px solid var(--warn)}
 "use strict";
 /* ---------- Language: English by default, Japanese for Japanese browsers or by choice ---------- */
 var LANG=(function(){ try{ var m=location.search.match(/[?&]lang=(en|ja)/); if(m) return m[1]; var s=JSON.parse(localStorage.getItem('town-smash-set-v1')||'null'); if(s&&(s.lang==='en'||s.lang==='ja')) return s.lang; }catch(e){} return 'en'; })();
-var I18N={"コラッ": "Hey!", "町内会長": "Boss", "秒後に閉じられます": "s… please wait", "閉じる ✕": "Close ✕", "大根": "Radish", "大根が折れた!": "The radish snapped!", "長ネギ": "Leek", "ネギがしなしなに…": "The leek went limp…", "冷凍マグロ": "Frozen Tuna", "マグロが解凍された…": "The tuna thawed…", "こしょう": "Pepper", "バナナ": "Banana", "卵パック": "Egg Carton", "カート": "Cart", "試食ウインナー": "Free Sausage", "ほうき": "Broom", "ほうきがバラバラに": "The broom fell apart", "ランドセル": "School Bag", "ランドセルの留め具が壊れた": "The school bag broke", "黒板消し": "Eraser", "チョーク": "Chalk", "濡れ雑巾": "Wet Rag", "リコーダー": "Recorder", "給食の牛乳": "School Milk", "ボール": "Ball", "スケボー": "Skateboard", "フリスビー": "Frisbee", "水鉄砲": "Water Gun", "ハトのエサ": "Pigeon Feed", "シャボン玉": "Bubbles", "スコップ": "Shovel", "スコップが割れた": "The shovel cracked", "ソフトクリーム": "Ice Cream", "巨大ぬいぐるみ": "Giant Plush", "ぬいぐるみの綿が出た…": "The plush lost its stuffing…", "巨大スナック棒": "Giant Snack Stick", "スナック棒が粉々に": "The snack crumbled", "ピコピコハンマー": "Squeaky Hammer", "ハンマーの空気が抜けた": "The hammer deflated", "ガチャボール": "Capsule Toy", "メダル": "Tokens", "巨大キャンディ": "Giant Candy", "パンチ": "Punch", "スーパー": "Supermarket", "大根・こしょう・カート": "Radish · Pepper · Cart", "野菜": "Veggies", "本日特売": "SALE", "鮮魚": "Fish", "お惣菜": "Deli", "レジ": "Checkout", "試食": "Samples", "特売": "SALE", "学校": "School", "ほうき・黒板消し・リコーダー": "Broom · Eraser · Recorder", "本日の目標: みんな なかよく": "Today's goal: BE NICE", "日直: ババア": "On duty: Granny", "静かに": "Quiet", "給食当番": "Lunch", "廊下は走らない": "No running", "3年B組": "Class 3B", "公園": "Park", "ボール・スケボー・水鉄砲": "Ball · Skateboard · Water gun", "すべり台": "Slide", "水飲み場": "Fountain", "ソフト": "Ice Cream", "ゲームセンター": "Arcade", "ぬいぐるみ・お菓子・ガチャ": "Plush · Snacks · Capsules", "クレーン": "Claw", "おかし": "Snacks", "もぐらたたき": "Whack-a-mole", "ジジイ": "Grandpa", "吹っ飛びにくい。杖でゴツン": "Hard to knock back. Bonks with his cane", "杖": "Cane", "わしの若い頃はな…": "Back in my day…", "かかってこんかい": "Bring it on!", "入れ歯が飛ぶぞい": "My dentures!", "腰がぁ!": "My back!", "あいたた": "Ouch", "なにをするか!": "How dare you!", "ババア": "Granny", "回復が1.6倍。3連パンチ": "Heals 1.6x. 3-hit punch combo", "かかってきな!": "Come at me!", "年寄りをなめるんじゃないよ": "Don't mess with grandma", "今日は特売日だよ!": "It's sale day!", "いたっ!": "Ow!", "覚えときな!": "You'll pay!", "この〜!": "Why you…!", "サラリーマン": "Salaryman", "物を投げると強い。カバンで殴る": "Strong throws. Hits with his briefcase", "カバン": "Briefcase", "定時で帰りたい…": "I want to go home…", "本日もよろしくお願いします": "Pleasure doing business", "会議より楽だ": "Easier than meetings", "痛っ!": "Ow!", "労災だ!": "Workplace injury!", "ちょっと待ってください!": "Wait a moment!", "キャリアウーマン": "Career Woman", "足が速い。ハイヒールキック": "Fast. High-heel kick", "ハイヒールキック": "High-heel Kick", "アポの時間なの": "I have a meeting", "結果で示すわ": "Results speak", "5分で片付ける": "Done in 5 minutes", "ちょっと!": "Excuse me!", "ストッキングが!": "My stockings!", "許さない!": "Unforgivable!", "サル": "Monkey", "ウキッ!": "Ook!", "少し速い。回避が連発できる": "A bit fast. Can dodge rapidly", "ひっかき": "Scratch", "ウキキッ!": "Ook ook!", "キーッ!": "Eeek!", "ウッキー!": "Ookie!", "ギャッ!": "Gyah!", "キキーッ!": "Kreee!", "犬": "Dog", "ワン!": "Woof!", "とても速い。素手ではかみつき、アイテムも使える": "Very fast. Bites bare-handed, can use items", "かみつき": "Bite", "ガルルル…": "Grrrr…", "ワンワン!": "Woof woof!", "キャイン!": "Yelp!", "クゥーン": "Whimper", "宇宙人": "Alien", "ブンセキチュウ…": "ANALYZING…", "遅いが、素手で光線。回避ボタンでワープ": "Slow, but shoots lasers. Dodge = teleport", "光線": "Laser", "ワレワレハ…": "WE ARE…", "チキュウジン、テキ": "EARTHLING = ENEMY", "ピポパポ": "Beep boop", "ギギッ": "Bzzt", "エラー!": "ERROR!", "ピガー!": "Pgaaa!", "ゾンビ": "Zombie", "とても遅くアイテムも使えないが、かんだ相手をゾンビにする": "Very slow, no items, but bites turn rivals into zombies", "ア゛ァ…": "Uhhh…", "ウ゛ゥ…": "Grrr…", "ニク…": "Brains…", "ア゛ッ": "Ugh", "グエッ": "Blegh", "、もらった!": "!", "ありがたや": "Thank you!", "おいしいねぇ": "Delicious", "生き返るよ": "I feel alive", "★必殺!": "★SUPER!", "攻撃ボタンで必殺発動!": "Press Attack to use your super!", "必殺中は投げられない": "Can't throw during a super", "ゾンビ化中はアイテムを持てない": "Zombies can't hold items", "はアイテムを持てない": " can't hold items", "ハッ…ハックション!": "Ah… ACHOO!", "あれぇ〜!": "Whoaaa!", "すべるぅ!": "Slippery!", "浮いちゃう〜": "I'm floating~", "ハトがっ! ハトがっ!": "Pigeons! Pigeons!", "前が見えない!": "I can't see!", "バシッ!": "WHACK!", "ドカッ!": "BAM!", "ボコッ!": "POW!", "ゾンビ化!": "ZOMBIFIED!", " ゾンビ化": " zombified", "ア゛…からだが…": "Uhh… my body…", " 脱落": " is out", "ピーーー♪": "TOOT♪", "どすこい": "Dosukoi", "どすこーい!": "DOSUKOI!", "どいたどいた〜!": "Coming through!", "どっこいしょパンチ": "Heave-ho Punch", "どっこいしょ!": "HEAVE-HO!", "キラキラ!": "Sparkle!", "ビヨ〜ン!": "Boing!", "ガチャ(バネ)": "Capsule (spring)", "ドカーン!": "KABOOM!", "ガチャ(爆発)": "Capsule (boom)", "ハズレ…": "Dud…", "ハト": "Pigeons", "もとに戻った": "Back to normal", "ハックション!": "ACHOO!", "壁ドン!": "WALL SLAM!", "壁ドン": "Wall slam", "ゴールドハリセン": "Golden Paper Fan", "5秒間、当てれば一撃KO": "5 seconds: every hit is a one-hit KO", "巨大漬物石": "Giant Pickle Stone", "巨大な漬物石を落とす範囲攻撃(大)": "Drops a giant stone (big area attack)", "名刺投げ放題": "Business Card Storm", "8秒間、名刺を扇状に投げ放題": "8 seconds of unlimited card fans", "ミラーボール": "Mirror Ball", "4秒間、ステージ全員に光の攻撃(大)。自分は足が速くなる": "4 seconds of light damage to everyone on stage. You run faster", "異形の怪物": "Monster Form", "5秒間怪物に変身、そのあと10秒間パワーとスピードアップ": "5s monster form, then 10s of power and speed", "犬神": "Dog God", "10秒間、まわりに攻撃サークル。足も速くなる": "10s damage circle around you. You run faster", "大猿": "Giant Ape", "5秒間巨大化して、口から直線ビーム(大)": "5s giant with a huge mouth beam", "ビームソード": "Laser Sword", "5秒間、攻撃が広範囲のビームソード(中)に": "5s wide laser sword attacks", "必殺アイテム": "Super Item", "名刺": "Business Cards", "口からビーム": "Mouth Beam", "」発動!": "\"!", "「": " \"", "」": "\": ", "大咆哮": "Mega Roar", "大猿ビーム": "Ape Beam", "ごろごろ転がり": "Rolling Panda", "ゴーストタッチ": "Ghost Touch", "ミサイル": "Missile", "うわーん!": "WAAAH!", "ギャン泣き": "Tantrum", "恐竜": "Dinosaur", "アイテムは使えないが、体が大きく吹っ飛びにくい。しっぽで広くなぎ払う": "No items, but big and hard to knock back. Wide tail swipe", "しっぽ": "Tail", "ガオー!": "RAWR!", "グルルル…": "Grrrr…", "ギャオッ!": "Gyao!", "グワッ": "Gwah", "パンダ": "Panda", "のんびりだがタフ。殴られずにいると体力が少しずつ回復": "Slow but tough. Regains HP when not hit", "張り手": "Slap", "もぐもぐ…": "Munch munch…", "パンダだよ": "I'm a panda", "いたいパン": "Ouchie", "むっ": "Hmph", "力士": "Sumo", "遅いが重くてほぼ吹っ飛ばない。張り手がとても速い": "Slow and heavy, barely knocked back. Super-fast slaps", "どすこい!": "Dosukoi!", "ごっつぁんです": "Much obliged", "ぬんっ!": "Hnng!", "効かんでごわす": "Didn't hurt", "ペンギン": "Penguin", "回避が長いおなかすべり。すべっている間は無敵": "Dodge is a long belly slide (invincible while sliding)", "くちばし": "Beak", "ペンペン!": "Pen pen!", "クワッ": "Kwah", "クェッ!": "Kweh!", "ペギャ": "Pegya", "ロボット": "Robot", "素手でロケットパンチが飛ぶ": "Fires rocket punches bare-handed", "ロケットパンチ": "Rocket Punch", "ピピッ": "Beep", "モクヒョウ、ハッケン": "TARGET FOUND", "ガガッ": "Gzzt", "ショウゲキ、ケンチ": "IMPACT DETECTED", "おばけ": "Ghost", "回避で長くすり抜ける。おどかすと相手がひるむ": "Long phase-through dodge. Scares make rivals flinch", "おどかす": "Boo!", "うらめしや〜": "Boooo~", "ひゅ〜どろどろ": "Whoooo~", "ひぃっ": "Eek", "きえ〜": "Fading~", "園児": "Kid", "小さくて速い。だだっこパンチが速い": "Small and fast. Rapid tantrum punches", "だだっこパンチ": "Tantrum Punch", "あそぼー!": "Let's play!", "おやつまだー?": "Snack time?", "うえーん": "Waaah", "いたいー!": "Owwie!", "ほえて周りを吹き飛ばしクラクラに。6秒間巨大化して、ぶつかるだけでダメージ": "Roar knocks everyone away and dizzies them. 6s giant: touching hurts", "5秒間、ボールになって高速で転がり、ぶつかった相手をはね飛ばす": "5s rolling ball that sends rivals flying", "どすこい突進": "Sumo Charge", "5秒間、攻撃ボタンで何度でも強烈な突進": "5s: every Attack is a huge charge", "ブリザード": "Blizzard", "6秒間、周りに吹雪。入った敵はダメージと足止め、たまに転ぶ": "6s blizzard around you: damage, slow and slips", "ミサイル乱射": "Missile Barrage", "5秒間、追いかけるミサイルを自動で連射": "5s of auto-firing homing missiles", "6秒間ほぼ透明になって攻撃が当たらない。触れた相手をたたる": "6s nearly invisible and untouchable. Touch curses rivals", "4秒間、泣き声の衝撃波で周りを吹き飛ばし続ける": "4s of crying shockwaves that blast rivals away", " の必殺": " SUPER", "タイムセール!": "TIME SALE!", "★ タイムセール開始! 特売コーナーに品物が出た": "★ Time sale! Items dropped in the SALE corner", "給食の時間!": "LUNCH TIME!", "★ 給食の時間! 牛乳が配られた": "★ Lunch time! Milk was served", "★ スプリンクラーが動き出した": "★ The sprinklers turned on", "★ 巨大クレーンが ": "★ The giant claw is after ", " をねらってる!": "!", "お掃除ロボ": "Robo Vacuum", "ウィーン": "Vrrr", "コラッ!": "HEY!", "先生": "Teacher", "巨大クレーン": "Giant Claw", "キャッチ!": "CAUGHT!", "スカッ": "Miss", "名前とキャラを選んで「入る」を押してね": "Pick a name and fighter, then press Join", "いまは広告を見られません。少し待ってね": "No ad right now. Try again soon", "少し時間をおいてからもう一度どうぞ": "Please wait a little and try again", "秒後にごほうび": "s until your reward", "ごほうびをもらう ✕": "Get reward ✕", "この場所では広告はありません": "No ads here", "なし": "None", "キラキラ星": "Stars", "1回遊ぶ": "Play 1 match", "ハート": "Hearts", "3回遊ぶ": "Play 3 matches", "あわ": "Bubbles", "1回優勝": "Win 1 match", "はっぱ": "Leaves", "通算20KO": "20 total KOs", "ほのお": "Flames", "3回優勝": "Win 3 matches", "にじ": "Rainbow", "10回遊ぶ": "Play 10 matches", "金ピカ": "Gold", "10回優勝": "Win 10 matches", "もう全部持ってるよ!": "You already have them all!", "★ 足あと「": "★ New trail: ", "」をゲット!": "!", "で解放</small>": " to unlock</small>", "で解放": " to unlock", "（広告を見てもOK）": " (or watch an ad)", "音:全部": "Sound: All", "音:効果音のみ": "Sound: SFX", "音:切": "Sound: Off", "ゲスト": "Guest", "戦績: まだ乱闘していない": "Record: no matches yet", "戦績 ": "Record: ", "戦 ": " played · ", "勝 ・ 通算KO ": " wins · KOs ", " ・ 最高連勝 ": " · Best streak ", "あなた": "You", "部屋を準備中…": "Creating room…", "通信の準備に失敗しました。ネット接続を確認してね": "Couldn't start online play. Check your connection", "この合言葉を友だちに伝えてね（最大15人）": "Share this code with friends (up to 15 players)", "通信エラー: ": "Connection error: ", " が入った": " joined", "だれか": "Someone", " が抜けた → CPUが代わりに戦う": " left → a CPU takes over", " が抜けた": " left", "つないでいます…": "Connecting…", "つながりませんでした。合言葉とネット接続を確認してね": "Couldn't connect. Check the code and your connection", "つながった! ホストの開始を待っています": "Connected! Waiting for the host to start", "ホストとの接続が切れました": "Lost connection to the host", "その合言葉の部屋が見つかりません": "No room with that code", "いま試合中です。終わってからもう一度入ってね": "A match is in progress. Try again after it ends", "部屋がいっぱいです（最大15人）": "The room is full (15 max)", "ホストが部屋を閉じました": "The host closed the room", " ・ ": " · ", " ・ 時間切れ": " · Time up", " ・ オンライン": " · Online", "優勝!": "YOU WIN!", " の勝ち": " wins", "位</b><div>": "</b><div>", "CPU ・ ": "CPU · ", "ダメ</span></div>": " dmg</span></div>", "★ 新しい足あとエフェクトが解放された! 準備画面で選べるよ": "★ New trail unlocked! Pick it in Settings", " ・ 時間切れは残機と体力で判定": " · Time up: ranked by lives, then HP", "部屋に戻る": "Back to room", "設定を変える": "Settings", "部屋を閉じる": "Close room", "部屋を出る": "Leave room", "タイトルへ": "Title", "ひとりで乱闘": "Solo Brawl", "部屋を作る": "Create Room", "合言葉で入る": "Join with Code", "部屋で待機中": "Waiting Room", "もどる": "Back", "人数（足りない分はCPU）": "Players (CPUs fill empty slots)", "人数（あなた＋CPU）": "Players (you + CPUs)", "ランダム": "Random", "どこでも乱闘": "Any stage", "人": "", "よわい": "Easy", "ふつう": "Normal", "つよい": "Hard", "機": " lives", "BGMと効果音": "Music & SFX", "効果音だけ": "SFX only", "少なめ": "Less", "自分のセリフだけ": "Only your lines", "多め": "More", "全員しゃべる": "Everyone talks", "KOのお知らせだけ": "KO notices only", "</b> 体力 ": "</b> HP ", " ・ 速さ ": " · Speed ", " ・ アイテム不可": " · No items", "<br>★必殺「": "<br>★Super \"", "ゲームパッド ": "", "台を検出: 2台目以降は 2P〜4P として参加（A 攻撃 / X 拾う・投げる / B 回避）": " gamepads found: extra pads join as 2P–4P (A attack / X pick up · throw / B dodge)", "ゲームパッド1台を検出: 1P で使えます（A 攻撃 / X 拾う・投げる / B 回避）": "Gamepad found: use it as 1P (A attack / X pick up · throw / B dodge)", "ゲームパッドをつなぐと、この端末で最大4人まで遊べます": "Connect gamepads to play with up to 4 people on this device", " ・ ホスト": " · Host", " ・ あなた": " · You", "<div><small>＋ CPU ": "<div><small>+ CPU ×", "人（": " (", "）</small></div>": ")</small></div>", "<div><small>ステージ: ": "<div><small>Stage: ", " ・ ストック": " · Lives ", "機</small></div>": "</small></div>", "メニュー": "Menu", "一時停止": "Pause", "タイトルへ戻る": "Back to title", "5けたの数字を入れてね": "Enter the 5-digit code", "TOWN SMASHERS で乱闘しよう！ 合言葉 ": "Let's brawl in TOWN SMASHERS! Room code ", "招待をコピーした": "Invite copied", "合言葉: ": "Room code: ", "復活中": "Respawn", "ゾンビ化 ": "Zombie ", "★必殺中 ": "★Super ", "</b> あと": "</b> ", "秒": "s left", "★ <b>必殺アイテム</b> 攻撃で「": "★ <b>Super item</b> Attack to use \"", "手に <b>": "Holding <b>", "あと": "", "発で壊れる": " hits left", "残り": "Uses: ", "手ぶら ・ 近くの品物を「拾う」": "Empty-handed · Grab nearby items", "ゾンビ化中": "Zombified", "</b> ・ アイテムは持てない": "</b> · can't hold items", "必殺!": "SUPER!", "ワープ": "Warp", "回避": "Dodge", "必殺中": "Super", "投げる": "Throw", "拾う!": "Grab!", "拾う": "Grab", "ファイト!": "FIGHT!", "★ 必殺アイテム出現!": "★ A super item appeared!", "ADVERTISEMENT ・ 広告": "ADVERTISEMENT", "CPUの強さ": "CPU level", "WASD 移動 ・ J 攻撃 ・ K 拾う/投げる ・ L か Shift 回避 ・ P 一時停止": "WASD move · J attack · K grab/throw · L or Shift dodge · P pause", "▶ 広告を見て1つもらう": "▶ Watch an ad to get one", "♪ 画面のどこかをタッチすると音が出るよ ♪": "♪ Tap anywhere to turn on sound ♪", "なまえ": "Name", "ひとりで遊ぶ": "PLAY", "まちなか大乱闘 ・ 最大15人": "Neighborhood brawl · up to 15 players", "もう一回": "Play again", "オンライン ・ 友だちの部屋に参加": "Online · join a friend's room", "オンライン ・ 合言葉で友だちを呼ぶ": "Online · invite friends with a code", "オンライン対戦中はゲームは止まりません": "The game keeps running during online matches", "キャラクター": "Fighter", "サウンド": "Sound", "ジジイもゾンビも恐竜も、15キャラ入り乱れて": "Grandpas, zombies, dinosaurs — 15 fighters", "スーパーや学校にある物で大乱闘!": "brawl with whatever they find!", "ステージ": "Stage", "ストック": "Lives", "セリフ・実況": "Chatter", "ホストが次の試合を始めるのを待っています…": "Waiting for the host to start the next match…", "乱闘の準備": "Brawl Setup", "乱闘開始！": "FIGHT!", "入る": "Join", "公開版ではここに広告が入ります": "An ad will appear here in the released game", "再開": "Resume", "合言葉": "Room code", "合言葉（5けたの数字）": "Room code (5 digits)", "広告枠（テスト表示）": "Ad slot (test)", "手ぶら": "Empty-handed", "招待をコピー": "Copy invite", "攻撃": "Attack", "結果へ": "Results", "観戦中…": "Spectating…", "足あとエフェクト（見た目だけ・強さは変わらない）": "Footprint trail (cosmetic only)", "WASD か 矢印キーで動こう": "Move with WASD or the arrow keys", "左のスティックで動こう": "Move with the left stick", "棚の近くで K を押すと品物を拾える": "Press K near a shelf to grab an item", "棚や床の品物の近くで「拾う」": "Press Grab near a shelf or an item", "J で攻撃! 近くの相手をなぐろう": "Press J to attack nearby rivals!", "「攻撃」で近くの相手をなぐろう!": "Press Attack to hit nearby rivals!", "金色の★アイテムで必殺技! 最後まで残れば勝ち": "Golden ★ items = SUPER move! Last one standing wins", "キャラ・ルールを選ぶ": "Choose Fighter & Rules", "ひとりで遊ぶ ・ CPUと対戦": "Solo · vs CPUs", "English / 日本語": "日本語 / English", "対戦相手をさがしています…": "Looking for players…", "見つかった! まもなく開始": "Found a match! Starting soon", "いまは混んでいます。少し待ってもう一度": "Too busy right now. Please try again shortly", "ほかのプレイヤーを待っています… あと": "Waiting for more players… starting in ", "秒で開始": "s", "クイック対戦": "Quick Match", "やめる": "Cancel", "オンライン ・ だれかと自動でマッチング": "Online · auto-match with anyone"};
+var I18N={"視点:背後": "View: Behind", "視点:上から": "View: Top", "コラッ": "Hey!", "町内会長": "Boss", "秒後に閉じられます": "s… please wait", "閉じる ✕": "Close ✕", "大根": "Radish", "大根が折れた!": "The radish snapped!", "長ネギ": "Leek", "ネギがしなしなに…": "The leek went limp…", "冷凍マグロ": "Frozen Tuna", "マグロが解凍された…": "The tuna thawed…", "こしょう": "Pepper", "バナナ": "Banana", "卵パック": "Egg Carton", "カート": "Cart", "試食ウインナー": "Free Sausage", "ほうき": "Broom", "ほうきがバラバラに": "The broom fell apart", "ランドセル": "School Bag", "ランドセルの留め具が壊れた": "The school bag broke", "黒板消し": "Eraser", "チョーク": "Chalk", "濡れ雑巾": "Wet Rag", "リコーダー": "Recorder", "給食の牛乳": "School Milk", "ボール": "Ball", "スケボー": "Skateboard", "フリスビー": "Frisbee", "水鉄砲": "Water Gun", "ハトのエサ": "Pigeon Feed", "シャボン玉": "Bubbles", "スコップ": "Shovel", "スコップが割れた": "The shovel cracked", "ソフトクリーム": "Ice Cream", "巨大ぬいぐるみ": "Giant Plush", "ぬいぐるみの綿が出た…": "The plush lost its stuffing…", "巨大スナック棒": "Giant Snack Stick", "スナック棒が粉々に": "The snack crumbled", "ピコピコハンマー": "Squeaky Hammer", "ハンマーの空気が抜けた": "The hammer deflated", "ガチャボール": "Capsule Toy", "メダル": "Tokens", "巨大キャンディ": "Giant Candy", "パンチ": "Punch", "スーパー": "Supermarket", "大根・こしょう・カート": "Radish · Pepper · Cart", "野菜": "Veggies", "本日特売": "SALE", "鮮魚": "Fish", "お惣菜": "Deli", "レジ": "Checkout", "試食": "Samples", "特売": "SALE", "学校": "School", "ほうき・黒板消し・リコーダー": "Broom · Eraser · Recorder", "本日の目標: みんな なかよく": "Today's goal: BE NICE", "日直: ババア": "On duty: Granny", "静かに": "Quiet", "給食当番": "Lunch", "廊下は走らない": "No running", "3年B組": "Class 3B", "公園": "Park", "ボール・スケボー・水鉄砲": "Ball · Skateboard · Water gun", "すべり台": "Slide", "水飲み場": "Fountain", "ソフト": "Ice Cream", "ゲームセンター": "Arcade", "ぬいぐるみ・お菓子・ガチャ": "Plush · Snacks · Capsules", "クレーン": "Claw", "おかし": "Snacks", "もぐらたたき": "Whack-a-mole", "ジジイ": "Grandpa", "吹っ飛びにくい。杖でゴツン": "Hard to knock back. Bonks with his cane", "杖": "Cane", "わしの若い頃はな…": "Back in my day…", "かかってこんかい": "Bring it on!", "入れ歯が飛ぶぞい": "My dentures!", "腰がぁ!": "My back!", "あいたた": "Ouch", "なにをするか!": "How dare you!", "ババア": "Granny", "回復が1.6倍。3連パンチ": "Heals 1.6x. 3-hit punch combo", "かかってきな!": "Come at me!", "年寄りをなめるんじゃないよ": "Don't mess with grandma", "今日は特売日だよ!": "It's sale day!", "いたっ!": "Ow!", "覚えときな!": "You'll pay!", "この〜!": "Why you…!", "サラリーマン": "Salaryman", "物を投げると強い。カバンで殴る": "Strong throws. Hits with his briefcase", "カバン": "Briefcase", "定時で帰りたい…": "I want to go home…", "本日もよろしくお願いします": "Pleasure doing business", "会議より楽だ": "Easier than meetings", "痛っ!": "Ow!", "労災だ!": "Workplace injury!", "ちょっと待ってください!": "Wait a moment!", "キャリアウーマン": "Career Woman", "足が速い。ハイヒールキック": "Fast. High-heel kick", "ハイヒールキック": "High-heel Kick", "アポの時間なの": "I have a meeting", "結果で示すわ": "Results speak", "5分で片付ける": "Done in 5 minutes", "ちょっと!": "Excuse me!", "ストッキングが!": "My stockings!", "許さない!": "Unforgivable!", "サル": "Monkey", "ウキッ!": "Ook!", "少し速い。回避が連発できる": "A bit fast. Can dodge rapidly", "ひっかき": "Scratch", "ウキキッ!": "Ook ook!", "キーッ!": "Eeek!", "ウッキー!": "Ookie!", "ギャッ!": "Gyah!", "キキーッ!": "Kreee!", "犬": "Dog", "ワン!": "Woof!", "とても速い。素手ではかみつき、アイテムも使える": "Very fast. Bites bare-handed, can use items", "かみつき": "Bite", "ガルルル…": "Grrrr…", "ワンワン!": "Woof woof!", "キャイン!": "Yelp!", "クゥーン": "Whimper", "宇宙人": "Alien", "ブンセキチュウ…": "ANALYZING…", "遅いが、素手で光線。回避ボタンでワープ": "Slow, but shoots lasers. Dodge = teleport", "光線": "Laser", "ワレワレハ…": "WE ARE…", "チキュウジン、テキ": "EARTHLING = ENEMY", "ピポパポ": "Beep boop", "ギギッ": "Bzzt", "エラー!": "ERROR!", "ピガー!": "Pgaaa!", "ゾンビ": "Zombie", "とても遅くアイテムも使えないが、かんだ相手をゾンビにする": "Very slow, no items, but bites turn rivals into zombies", "ア゛ァ…": "Uhhh…", "ウ゛ゥ…": "Grrr…", "ニク…": "Brains…", "ア゛ッ": "Ugh", "グエッ": "Blegh", "、もらった!": "!", "ありがたや": "Thank you!", "おいしいねぇ": "Delicious", "生き返るよ": "I feel alive", "★必殺!": "★SUPER!", "攻撃ボタンで必殺発動!": "Press Attack to use your super!", "必殺中は投げられない": "Can't throw during a super", "ゾンビ化中はアイテムを持てない": "Zombies can't hold items", "はアイテムを持てない": " can't hold items", "ハッ…ハックション!": "Ah… ACHOO!", "あれぇ〜!": "Whoaaa!", "すべるぅ!": "Slippery!", "浮いちゃう〜": "I'm floating~", "ハトがっ! ハトがっ!": "Pigeons! Pigeons!", "前が見えない!": "I can't see!", "バシッ!": "WHACK!", "ドカッ!": "BAM!", "ボコッ!": "POW!", "ゾンビ化!": "ZOMBIFIED!", " ゾンビ化": " zombified", "ア゛…からだが…": "Uhh… my body…", " 脱落": " is out", "ピーーー♪": "TOOT♪", "どすこい": "Dosukoi", "どすこーい!": "DOSUKOI!", "どいたどいた〜!": "Coming through!", "どっこいしょパンチ": "Heave-ho Punch", "どっこいしょ!": "HEAVE-HO!", "キラキラ!": "Sparkle!", "ビヨ〜ン!": "Boing!", "ガチャ(バネ)": "Capsule (spring)", "ドカーン!": "KABOOM!", "ガチャ(爆発)": "Capsule (boom)", "ハズレ…": "Dud…", "ハト": "Pigeons", "もとに戻った": "Back to normal", "ハックション!": "ACHOO!", "壁ドン!": "WALL SLAM!", "壁ドン": "Wall slam", "ゴールドハリセン": "Golden Paper Fan", "5秒間、当てれば一撃KO": "5 seconds: every hit is a one-hit KO", "巨大漬物石": "Giant Pickle Stone", "巨大な漬物石を落とす範囲攻撃(大)": "Drops a giant stone (big area attack)", "名刺投げ放題": "Business Card Storm", "8秒間、名刺を扇状に投げ放題": "8 seconds of unlimited card fans", "ミラーボール": "Mirror Ball", "4秒間、ステージ全員に光の攻撃(大)。自分は足が速くなる": "4 seconds of light damage to everyone on stage. You run faster", "異形の怪物": "Monster Form", "5秒間怪物に変身、そのあと10秒間パワーとスピードアップ": "5s monster form, then 10s of power and speed", "犬神": "Dog God", "10秒間、まわりに攻撃サークル。足も速くなる": "10s damage circle around you. You run faster", "大猿": "Giant Ape", "5秒間巨大化して、口から直線ビーム(大)": "5s giant with a huge mouth beam", "ビームソード": "Laser Sword", "5秒間、攻撃が広範囲のビームソード(中)に": "5s wide laser sword attacks", "必殺アイテム": "Super Item", "名刺": "Business Cards", "口からビーム": "Mouth Beam", "」発動!": "\"!", "「": " \"", "」": "\": ", "大咆哮": "Mega Roar", "大猿ビーム": "Ape Beam", "ごろごろ転がり": "Rolling Panda", "ゴーストタッチ": "Ghost Touch", "ミサイル": "Missile", "うわーん!": "WAAAH!", "ギャン泣き": "Tantrum", "恐竜": "Dinosaur", "アイテムは使えないが、体が大きく吹っ飛びにくい。しっぽで広くなぎ払う": "No items, but big and hard to knock back. Wide tail swipe", "しっぽ": "Tail", "ガオー!": "RAWR!", "グルルル…": "Grrrr…", "ギャオッ!": "Gyao!", "グワッ": "Gwah", "パンダ": "Panda", "のんびりだがタフ。殴られずにいると体力が少しずつ回復": "Slow but tough. Regains HP when not hit", "張り手": "Slap", "もぐもぐ…": "Munch munch…", "パンダだよ": "I'm a panda", "いたいパン": "Ouchie", "むっ": "Hmph", "力士": "Sumo", "遅いが重くてほぼ吹っ飛ばない。張り手がとても速い": "Slow and heavy, barely knocked back. Super-fast slaps", "どすこい!": "Dosukoi!", "ごっつぁんです": "Much obliged", "ぬんっ!": "Hnng!", "効かんでごわす": "Didn't hurt", "ペンギン": "Penguin", "回避が長いおなかすべり。すべっている間は無敵": "Dodge is a long belly slide (invincible while sliding)", "くちばし": "Beak", "ペンペン!": "Pen pen!", "クワッ": "Kwah", "クェッ!": "Kweh!", "ペギャ": "Pegya", "ロボット": "Robot", "素手でロケットパンチが飛ぶ": "Fires rocket punches bare-handed", "ロケットパンチ": "Rocket Punch", "ピピッ": "Beep", "モクヒョウ、ハッケン": "TARGET FOUND", "ガガッ": "Gzzt", "ショウゲキ、ケンチ": "IMPACT DETECTED", "おばけ": "Ghost", "回避で長くすり抜ける。おどかすと相手がひるむ": "Long phase-through dodge. Scares make rivals flinch", "おどかす": "Boo!", "うらめしや〜": "Boooo~", "ひゅ〜どろどろ": "Whoooo~", "ひぃっ": "Eek", "きえ〜": "Fading~", "園児": "Kid", "小さくて速い。だだっこパンチが速い": "Small and fast. Rapid tantrum punches", "だだっこパンチ": "Tantrum Punch", "あそぼー!": "Let's play!", "おやつまだー?": "Snack time?", "うえーん": "Waaah", "いたいー!": "Owwie!", "ほえて周りを吹き飛ばしクラクラに。6秒間巨大化して、ぶつかるだけでダメージ": "Roar knocks everyone away and dizzies them. 6s giant: touching hurts", "5秒間、ボールになって高速で転がり、ぶつかった相手をはね飛ばす": "5s rolling ball that sends rivals flying", "どすこい突進": "Sumo Charge", "5秒間、攻撃ボタンで何度でも強烈な突進": "5s: every Attack is a huge charge", "ブリザード": "Blizzard", "6秒間、周りに吹雪。入った敵はダメージと足止め、たまに転ぶ": "6s blizzard around you: damage, slow and slips", "ミサイル乱射": "Missile Barrage", "5秒間、追いかけるミサイルを自動で連射": "5s of auto-firing homing missiles", "6秒間ほぼ透明になって攻撃が当たらない。触れた相手をたたる": "6s nearly invisible and untouchable. Touch curses rivals", "4秒間、泣き声の衝撃波で周りを吹き飛ばし続ける": "4s of crying shockwaves that blast rivals away", " の必殺": " SUPER", "タイムセール!": "TIME SALE!", "★ タイムセール開始! 特売コーナーに品物が出た": "★ Time sale! Items dropped in the SALE corner", "給食の時間!": "LUNCH TIME!", "★ 給食の時間! 牛乳が配られた": "★ Lunch time! Milk was served", "★ スプリンクラーが動き出した": "★ The sprinklers turned on", "★ 巨大クレーンが ": "★ The giant claw is after ", " をねらってる!": "!", "お掃除ロボ": "Robo Vacuum", "ウィーン": "Vrrr", "コラッ!": "HEY!", "先生": "Teacher", "巨大クレーン": "Giant Claw", "キャッチ!": "CAUGHT!", "スカッ": "Miss", "名前とキャラを選んで「入る」を押してね": "Pick a name and fighter, then press Join", "いまは広告を見られません。少し待ってね": "No ad right now. Try again soon", "少し時間をおいてからもう一度どうぞ": "Please wait a little and try again", "秒後にごほうび": "s until your reward", "ごほうびをもらう ✕": "Get reward ✕", "この場所では広告はありません": "No ads here", "なし": "None", "キラキラ星": "Stars", "1回遊ぶ": "Play 1 match", "ハート": "Hearts", "3回遊ぶ": "Play 3 matches", "あわ": "Bubbles", "1回優勝": "Win 1 match", "はっぱ": "Leaves", "通算20KO": "20 total KOs", "ほのお": "Flames", "3回優勝": "Win 3 matches", "にじ": "Rainbow", "10回遊ぶ": "Play 10 matches", "金ピカ": "Gold", "10回優勝": "Win 10 matches", "もう全部持ってるよ!": "You already have them all!", "★ 足あと「": "★ New trail: ", "」をゲット!": "!", "で解放</small>": " to unlock</small>", "で解放": " to unlock", "（広告を見てもOK）": " (or watch an ad)", "音:全部": "Sound: All", "音:効果音のみ": "Sound: SFX", "音:切": "Sound: Off", "ゲスト": "Guest", "戦績: まだ乱闘していない": "Record: no matches yet", "戦績 ": "Record: ", "戦 ": " played · ", "勝 ・ 通算KO ": " wins · KOs ", " ・ 最高連勝 ": " · Best streak ", "あなた": "You", "部屋を準備中…": "Creating room…", "通信の準備に失敗しました。ネット接続を確認してね": "Couldn't start online play. Check your connection", "この合言葉を友だちに伝えてね（最大15人）": "Share this code with friends (up to 15 players)", "通信エラー: ": "Connection error: ", " が入った": " joined", "だれか": "Someone", " が抜けた → CPUが代わりに戦う": " left → a CPU takes over", " が抜けた": " left", "つないでいます…": "Connecting…", "つながりませんでした。合言葉とネット接続を確認してね": "Couldn't connect. Check the code and your connection", "つながった! ホストの開始を待っています": "Connected! Waiting for the host to start", "ホストとの接続が切れました": "Lost connection to the host", "その合言葉の部屋が見つかりません": "No room with that code", "いま試合中です。終わってからもう一度入ってね": "A match is in progress. Try again after it ends", "部屋がいっぱいです（最大15人）": "The room is full (15 max)", "ホストが部屋を閉じました": "The host closed the room", " ・ ": " · ", " ・ 時間切れ": " · Time up", " ・ オンライン": " · Online", "優勝!": "YOU WIN!", " の勝ち": " wins", "位</b><div>": "</b><div>", "CPU ・ ": "CPU · ", "ダメ</span></div>": " dmg</span></div>", "★ 新しい足あとエフェクトが解放された! 準備画面で選べるよ": "★ New trail unlocked! Pick it in Settings", " ・ 時間切れは残機と体力で判定": " · Time up: ranked by lives, then HP", "部屋に戻る": "Back to room", "設定を変える": "Settings", "部屋を閉じる": "Close room", "部屋を出る": "Leave room", "タイトルへ": "Title", "ひとりで乱闘": "Solo Brawl", "部屋を作る": "Create Room", "合言葉で入る": "Join with Code", "部屋で待機中": "Waiting Room", "もどる": "Back", "人数（足りない分はCPU）": "Players (CPUs fill empty slots)", "人数（あなた＋CPU）": "Players (you + CPUs)", "ランダム": "Random", "どこでも乱闘": "Any stage", "人": "", "よわい": "Easy", "ふつう": "Normal", "つよい": "Hard", "機": " lives", "BGMと効果音": "Music & SFX", "効果音だけ": "SFX only", "少なめ": "Less", "自分のセリフだけ": "Only your lines", "多め": "More", "全員しゃべる": "Everyone talks", "KOのお知らせだけ": "KO notices only", "</b> 体力 ": "</b> HP ", " ・ 速さ ": " · Speed ", " ・ アイテム不可": " · No items", "<br>★必殺「": "<br>★Super \"", "ゲームパッド ": "", "台を検出: 2台目以降は 2P〜4P として参加（A 攻撃 / X 拾う・投げる / B 回避）": " gamepads found: extra pads join as 2P–4P (A attack / X pick up · throw / B dodge)", "ゲームパッド1台を検出: 1P で使えます（A 攻撃 / X 拾う・投げる / B 回避）": "Gamepad found: use it as 1P (A attack / X pick up · throw / B dodge)", "ゲームパッドをつなぐと、この端末で最大4人まで遊べます": "Connect gamepads to play with up to 4 people on this device", " ・ ホスト": " · Host", " ・ あなた": " · You", "<div><small>＋ CPU ": "<div><small>+ CPU ×", "人（": " (", "）</small></div>": ")</small></div>", "<div><small>ステージ: ": "<div><small>Stage: ", " ・ ストック": " · Lives ", "機</small></div>": "</small></div>", "メニュー": "Menu", "一時停止": "Pause", "タイトルへ戻る": "Back to title", "5けたの数字を入れてね": "Enter the 5-digit code", "TOWN SMASHERS で乱闘しよう！ 合言葉 ": "Let's brawl in TOWN SMASHERS! Room code ", "招待をコピーした": "Invite copied", "合言葉: ": "Room code: ", "復活中": "Respawn", "ゾンビ化 ": "Zombie ", "★必殺中 ": "★Super ", "</b> あと": "</b> ", "秒": "s left", "★ <b>必殺アイテム</b> 攻撃で「": "★ <b>Super item</b> Attack to use \"", "手に <b>": "Holding <b>", "あと": "", "発で壊れる": " hits left", "残り": "Uses: ", "手ぶら ・ 近くの品物を「拾う」": "Empty-handed · Grab nearby items", "ゾンビ化中": "Zombified", "</b> ・ アイテムは持てない": "</b> · can't hold items", "必殺!": "SUPER!", "ワープ": "Warp", "回避": "Dodge", "必殺中": "Super", "投げる": "Throw", "拾う!": "Grab!", "拾う": "Grab", "ファイト!": "FIGHT!", "★ 必殺アイテム出現!": "★ A super item appeared!", "ADVERTISEMENT ・ 広告": "ADVERTISEMENT", "CPUの強さ": "CPU level", "WASD 移動 ・ J 攻撃 ・ K 拾う/投げる ・ L か Shift 回避 ・ P 一時停止": "WASD move · J attack · K grab/throw · L or Shift dodge · P pause", "▶ 広告を見て1つもらう": "▶ Watch an ad to get one", "♪ 画面のどこかをタッチすると音が出るよ ♪": "♪ Tap anywhere to turn on sound ♪", "なまえ": "Name", "ひとりで遊ぶ": "PLAY", "まちなか大乱闘 ・ 最大15人": "Neighborhood brawl · up to 15 players", "もう一回": "Play again", "オンライン ・ 友だちの部屋に参加": "Online · join a friend's room", "オンライン ・ 合言葉で友だちを呼ぶ": "Online · invite friends with a code", "オンライン対戦中はゲームは止まりません": "The game keeps running during online matches", "キャラクター": "Fighter", "サウンド": "Sound", "ジジイもゾンビも恐竜も、15キャラ入り乱れて": "Grandpas, zombies, dinosaurs — 15 fighters", "スーパーや学校にある物で大乱闘!": "brawl with whatever they find!", "ステージ": "Stage", "ストック": "Lives", "セリフ・実況": "Chatter", "ホストが次の試合を始めるのを待っています…": "Waiting for the host to start the next match…", "乱闘の準備": "Brawl Setup", "乱闘開始！": "FIGHT!", "入る": "Join", "公開版ではここに広告が入ります": "An ad will appear here in the released game", "再開": "Resume", "合言葉": "Room code", "合言葉（5けたの数字）": "Room code (5 digits)", "広告枠（テスト表示）": "Ad slot (test)", "手ぶら": "Empty-handed", "招待をコピー": "Copy invite", "攻撃": "Attack", "結果へ": "Results", "観戦中…": "Spectating…", "足あとエフェクト（見た目だけ・強さは変わらない）": "Footprint trail (cosmetic only)", "WASD か 矢印キーで動こう": "Move with WASD or the arrow keys", "左のスティックで動こう": "Move with the left stick", "棚の近くで K を押すと品物を拾える": "Press K near a shelf to grab an item", "棚や床の品物の近くで「拾う」": "Press Grab near a shelf or an item", "J で攻撃! 近くの相手をなぐろう": "Press J to attack nearby rivals!", "「攻撃」で近くの相手をなぐろう!": "Press Attack to hit nearby rivals!", "金色の★アイテムで必殺技! 最後まで残れば勝ち": "Golden ★ items = SUPER move! Last one standing wins", "キャラ・ルールを選ぶ": "Choose Fighter & Rules", "ひとりで遊ぶ ・ CPUと対戦": "Solo · vs CPUs", "English / 日本語": "日本語 / English", "対戦相手をさがしています…": "Looking for players…", "見つかった! まもなく開始": "Found a match! Starting soon", "いまは混んでいます。少し待ってもう一度": "Too busy right now. Please try again shortly", "ほかのプレイヤーを待っています… あと": "Waiting for more players… starting in ", "秒で開始": "s", "クイック対戦": "Quick Match", "やめる": "Cancel", "オンライン ・ だれかと自動でマッチング": "Online · auto-match with anyone"};
 function T(s){ return LANG==='en'&&I18N[s]!==undefined?I18N[s]:s; }
 function translateDOM(){
   document.documentElement.lang=LANG; if(LANG!=='en') return;
@@ -1028,7 +1028,7 @@ function blk(cx,cz,w,d,h,col,o){
   if(o.stripe!==undefined) part(w+.02,.08,d+.02,o.stripe,h*.62);
   }
   if(!o.nosolid) solids.push({x0:cx-w/2,x1:cx+w/2,z0:cz-d/2,z1:cz+d/2,kind:o.kind||'prop',h:h});
-  if(h>1.25||o.fade) fades.push({mats:mats,x0:cx-w/2,x1:cx+w/2,z0:cz-d/2,z1:cz+d/2,op:1});
+  if(h>1.25||o.fade||D) fades.push({mats:mats,x0:cx-w/2,x1:cx+w/2,z0:cz-d/2,z1:cz+d/2,op:1,low:!(h>1.25||o.fade)});
   return mats;
 }
 function textCanvas(txt,bg,fg,w,h,font){
@@ -1052,12 +1052,13 @@ function floorTex(tex){
   var v=new THREE.Mesh(new THREE.PlaneGeometry(400,400),new THREE.MeshBasicMaterial({color:scene.background.clone().multiplyScalar(.45)})); v.rotation.x=-Math.PI/2; v.position.y=-.06; sAdd(v);
 }
 function walls(o){
-  var h=o.h||2.6;
-  blk(0,-15.5,42,1,h,o.col,{band:o.band,top:o.top,kind:'wall'});
-  blk(-20.5,0,1,32,h,o.col,{band:o.band,top:o.top,kind:'wall'});
-  blk(20.5,0,1,32,h,o.col,{band:o.band,top:o.top,kind:'wall'});
-  blk(0,15.5,42,1,o.sh||.9,o.col,{band:o.band,top:o.top,kind:'wall'});
+  var h=o.h||2.6, st=o.st, mk=function(side){ return st&&typeof MDL!=='undefined'&&MDL['pr_wall_'+st+'_'+side]?'wall_'+st+'_'+side:null; };
+  blk(0,-15.5,42,1,h,o.col,{band:o.band,top:o.top,kind:'wall',mdl:mk('n')});
+  blk(-20.5,0,1,32,h,o.col,{band:o.band,top:o.top,kind:'wall',mdl:mk('w')});
+  blk(20.5,0,1,32,h,o.col,{band:o.band,top:o.top,kind:'wall',mdl:mk('e')});
+  blk(0,15.5,42,1,o.sh||.9,o.col,{band:o.band,top:o.top,kind:'wall',mdl:mk('s')});
 }
+function pxTex(fn,rep){ var t=cvTex(64,64,fn,rep); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestMipmapLinearFilter||THREE.LinearMipmapLinearFilter; return t; }
 function goodsTex(pal){
   return cvTex(128,128,function(c){ c.fillStyle='#d8d4c8'; c.fillRect(0,0,128,128);
     for(var r=0;r<4;r++){ c.fillStyle='#8a8478'; c.fillRect(0,r*32+29,128,3); for(var x=2;x<126;){ var w=6+Math.random()*10; c.fillStyle=pick(pal); c.fillRect(x,r*32+8+Math.random()*6,w-2,22); c.fillStyle='rgba(255,255,255,.35)'; c.fillRect(x+1,r*32+12,w-4,3); x+=w; } } },[2,1]);
@@ -1079,8 +1080,8 @@ function glass(cx,cz,w,d,y0,h){
   var fr=bx(w+.06,.08,d+.06,0x2a2a3a); fr.position.set(cx,y0+h,cz); sAdd(fr);
 }
 function tree(x,z,s){
-  s=s||1; var mats=[], g=mdlPart(MDL.pr_tree,'m'); g.position.set(x,0,z); g.scale.setScalar(s); g.rotation.y=Math.random()*6.3;
-  g.traverse(function(q){ if(q.isMesh){ q.castShadow=true; q.receiveShadow=true; if(q.material.color.getHex()!==0x6b4a2a){ q.material.transparent=true; mats.push(q.material); } } }); sAdd(g);
+  s=s||1; var mats=[], g=mdlPart(MDL[Math.random()<.5?'pr_vtree':'pr_vtree2'],'m'); g.position.set(x,0,z); g.scale.setScalar(s); g.rotation.y=Math.random()*6.3;
+  g.traverse(function(q){ if(q.isMesh){ q.castShadow=true; q.receiveShadow=true; if(q.material.color.getHex()!==0x6b4a2a&&q.material.color.getHex()!==0x5a3e23&&q.material.color.getHex()!==0x7a5530){ q.material.transparent=true; mats.push(q.material); } } }); sAdd(g);
   solids.push({x0:x-.32*s,x1:x+.32*s,z0:z-.32*s,z1:z+.32*s,kind:'prop',h:3});
   fades.push({mats:mats,x0:x-1.3*s,x1:x+1.3*s,z0:z-1.3*s,z1:z+1.3*s,op:1});
 }
@@ -1090,91 +1091,81 @@ function screenTex(){
   return cvTex(64,64,function(c){ c.fillStyle='#0a0a1a'; c.fillRect(0,0,64,64); for(var i=0;i<14;i++){ c.fillStyle=pick(pal); c.fillRect((Math.random()*14|0)*4,(Math.random()*14|0)*4,4+(Math.random()*3|0)*4,4); } c.fillStyle='#fff'; c.fillRect(28,48,8,6); });
 }
 function cabinet(x,z,face,col){
-  blk(x,z,1.1,1.0,1.8,col,{mdl:'arcab'+Math.max(0,[0x3a2a6a,0x6a2a4a,0x2a4a6a].indexOf(col)),ry:face<0?Math.PI:0});
-  var s=new THREE.Mesh(new THREE.PlaneGeometry(.8,.56),new THREE.MeshBasicMaterial({map:screenTex()})); s.position.set(x,1.3,z+face*.5); if(face<0) s.rotation.y=Math.PI; sAdd(s);
+  blk(x,z,1.1,1.0,1.8,col,{mdl:'cab_'+'abc'[Math.max(0,[0x3a2a6a,0x6a2a4a,0x2a4a6a].indexOf(col))],ry:face<0?Math.PI:0});
+  var s=new THREE.Mesh(new THREE.PlaneGeometry(.86,.6),new THREE.MeshBasicMaterial({map:screenTex()})); s.position.set(x,1.32,z+face*.26); if(face<0) s.rotation.y=Math.PI; sAdd(s);
 }
 
 var STAGES={
   super:{n:T('スーパー'),sub:T('大根・こしょう・カート'),build:function(){
-    setLight({bg:0xb8bec4,sky:0xf4f8ff,gnd:0x6a6f7a,hi:.62,si:.55,sc:0xfff4e4});
-    floorTex(cvTex(128,128,function(x){ x.fillStyle='#cfcdc4'; x.fillRect(0,0,128,128); x.fillStyle='#bdbcb2'; x.fillRect(0,0,64,64); x.fillRect(64,64,64,64); x.strokeStyle='rgba(0,0,0,.07)'; x.lineWidth=2; x.strokeRect(0,0,128,128); },[10,8]));
-    walls({col:0xf2ecd8,band:0x2f8a4a,top:0xd8d0b8});
-    sign(T('野菜'),'#2f8a4a','#fff',-13,1.9,-14.98); sign(T('本日特売'),'#c8372d','#ffe14a',0,1.9,-14.98,0,2.6); sign(T('鮮魚'),'#1d5fa8','#fff',12,1.9,-14.98);
-    sign(T('お惣菜'),'#d9a521','#2a1d14',-19.98,1.9,-2,Math.PI/2); sign(T('レジ'),'#c8372d','#fff',19.98,1.9,10,-Math.PI/2);
-    addSource('daikon',-13,-10.5,5,1.8,.85,0x8a6a45,{mdl:'veg',top:0x5a8a3a,stock:4});
-    addSource('negi',-13,-5.5,5,1.8,.85,0x8a6a45,{mdl:'veg',top:0x5a8a3a,stock:4});
-    addSource('banana',-13,-.5,5,1.8,.85,0x8a6a45,{mdl:'vegy',top:0xd9a521,stock:3});
-    addSource('maguro',12,-14.2,8,1.6,1.0,0xe8f0f6,{mdl:'fish',top:0x8ac8e8,band:0x1d5fa8,stock:2,rt:12});
-    var gt=goodsTex(['#c8372d','#ffd23a','#2f8a4a','#3a6ad0','#f4f1e8','#8a5ab0','#ff8a3a']);
-    addSource('pepper',2,-8,9,1.2,1.9,0xd8d0c0,{mdl:'gondola',map:gt,top:0xe8e0d0,stock:3});
-    blk(2,-2.8,9,1.2,1.9,0,{mdl:'gondola',map:goodsTex(['#d9a521','#f4f1e8','#c8372d','#5a3a24','#3a6ad0']),top:0xe8e0d0});
-    addSource('egg',2,2.6,9,1.2,1.0,0xeef4f8,{mdl:'chiller',top:0x9ad0f0,band:0x1d5fa8,stock:3});
-    addSource('cart',16.5,6.5,3.2,1.6,.5,0x9aa4ac,{mdl:'corral',stock:2,rt:14,ms:.7});
-    [-10,-3.5].forEach(function(x){ blk(x,11.3,3.6,1.1,1.0,0x3a4a5a,{mdl:'register',top:0xd8d8d0});  });
-    addSource('sausage',12,2,2,2,1.0,0xf4f1e8,{mdl:'sample',top:0xc8372d,stock:1,rt:16});
-    sign(T('試食'),'#c8372d','#fff',12,1.85,3.02,0,1.3);
-    blk(-17.5,8.5,1.2,1.2,2.4,0xd8d0b8,{mdl:'pillar',}); blk(8.5,8.5,1.2,1.2,2.4,0xd8d0b8,{mdl:'pillar',});
-    decal(T('特売'),2,7.5,5,'rgba(200,55,45,.25)'); decal(T('レジ'),-6.8,13.6,4);
+    setLight({bg:0xb8bec4,sky:0xf4f8ff,gnd:0x6a6f7a,hi:.66,si:.55,sc:0xfff4e4});
+    floorTex(pxTex(function(x){ x.fillStyle='#ecebe4'; x.fillRect(0,0,64,64); for(var i=0;i<4;i++) for(var j=0;j<4;j++){ x.fillStyle=(i+j)%2?'#e2e0d6':'#f2f1ea'; x.fillRect(i*16,j*16,16,16); } for(var k=0;k<60;k++){ x.fillStyle='rgba(120,120,110,.25)'; x.fillRect(Math.random()*64|0,Math.random()*64|0,1,1); } },[20,15]));
+    walls({st:'super'});
+    addSource('daikon',-14,-10.5,5,1.8,.85,0,{mdl:'produce_a',stock:4,ms:1.1});
+    addSource('negi',-14,-5.5,5,1.8,.85,0,{mdl:'produce_b',stock:4,ms:1.1});
+    addSource('banana',-14,-.5,5,1.8,.85,0,{mdl:'produce_c',stock:3});
+    blk(-1,-14.4,9,.8,2.3,0,{mdl:'dairy'});
+    addSource('maguro',12,-14.0,8,1.6,1.0,0,{mdl:'seafood',stock:2,rt:12});
+    blk(-3.5,-6,1.2,8,2.0,0,{mdl:'gondola_a'}); addSource('pepper',2,-6,1.2,8,2.0,0,{mdl:'gondola_b',stock:3}); blk(7.5,-6,1.2,8,2.0,0,{mdl:'gondola_c'});
+    addSource('egg',2,3.2,9,1.2,1.0,0,{mdl:'coffin',stock:3});
+    blk(-6.5,3.2,1.6,1.0,.9,0,{mdl:'wagon'}); blk(12.5,-6,1.0,1.6,.9,0,{mdl:'wagon',ry:Math.PI/2});
+    addSource('sausage',12.5,2.5,2,2,1.0,0,{mdl:'sample',stock:1,rt:16});
+    [-10,-3.5,3].forEach(function(x){ blk(x,11.3,3.6,1.1,1.0,0,{mdl:'checkout'}); });
+    addSource('cart',16.5,7,3.2,1.6,.5,0,{mdl:'corral',stock:2,rt:14,ms:.7});
+    blk(17.8,12.2,1,.6,1.8,0,{mdl:'gumball'});
+    blk(-6,7.5,.5,.3,.7,0,{mdl:'wetfloor',nosolid:true});
     this.spawn=['daikon','negi','pepper','banana','egg','sausage','maguro'];
   }},
   school:{n:T('学校'),sub:T('ほうき・黒板消し・リコーダー'),build:function(){
-    setLight({bg:0xc8b898,sky:0xfff0d8,gnd:0x7a6a50,hi:.8,si:.65,sc:0xffe8c8});
-    floorTex(cvTex(128,128,function(x){ x.fillStyle='#b8885a'; x.fillRect(0,0,128,128); for(var i=0;i<8;i++){ x.fillStyle=i%2?'#c09060':'#b08050'; x.fillRect(0,i*16,128,15); x.fillStyle='#6a4a2a'; x.fillRect(0,i*16+15,128,1); x.fillRect((i*53+20)%128,i*16,1,15); } },[8,10]));
-    walls({col:0xf0e6cc,band:0x5a7a5a,top:0xd8ccb0});
-    var bb=new THREE.Mesh(new THREE.PlaneGeometry(14,2.2),new THREE.MeshLambertMaterial({map:cvTex(512,96,function(c){ c.fillStyle='#2f4a3a'; c.fillRect(0,0,512,96); c.strokeStyle='#8a6a3a'; c.lineWidth=8; c.strokeRect(0,0,512,96); c.fillStyle='rgba(255,255,255,.85)'; c.font='bold 34px sans-serif'; c.fillText(T('本日の目標: みんな なかよく'),30,58); c.font='22px sans-serif'; c.fillText(T('日直: ババア'),400,84); })}));
-    bb.position.set(0,1.6,-14.98); sAdd(bb);
-    addSource('chalk',-4.5,-14.4,5,.8,.95,0x8a6a3a,{mdl:'cab5',top:0xa8845a,stock:3});
-    addSource('eraser',4.5,-14.4,4,.8,.95,0x8a6a3a,{mdl:'cab4',top:0xa8845a,stock:3});
-    blk(0,-10.5,3.4,1.3,1.0,0x8a6a45,{mdl:'tdesk',top:0x6a7a6a});
-    [-6,-2.5,1].forEach(function(z){ [-14.5,-11.5,-8.5,8.5,11.5,14.5].forEach(function(x){ blk(x,z,1.1,.8,.75,0x9a7a4a,{mdl:'desk',top:0xd8c098});  }); });
-    addSource('broom',-19.4,5,1.2,2.4,2.0,0x7a8a9a,{mdl:'locker',stock:2,band:0x5a6a7a});
-    addSource('zokin',-19.2,10,1.4,2,.7,0x3a7ad0,{mdl:'sink',stock:2});
-    addSource('randoseru',19.4,-7,1.2,5,1.3,0x8a6a45,{mdl:'cubby5',stock:3,top:0xa8845a});
-    addSource('recorder',19.4,1.5,1.2,3,1.1,0x8a6a45,{mdl:'cubby3',stock:3,top:0xa8845a});
-    addSource('milk',15,12.6,2,1.2,.6,0x3a7ad0,{mdl:'crate',stock:2,rt:18});
-    sign(T('静かに'),'#f4f1e8','#2a2a2a',-14,1.9,-14.98,0,1.8); sign(T('給食当番'),'#ffd23a','#2a1d14',14,1.9,-14.98,0,1.8);
-    sign(T('廊下は走らない'),'#f4f1e8','#c8372d',-19.98,1.9,-6,Math.PI/2,2.2);
-    var clk=new THREE.Mesh(new THREE.CircleGeometry(.4,20),new THREE.MeshLambertMaterial({map:cvTex(64,64,function(c){ c.fillStyle='#fff'; c.beginPath(); c.arc(32,32,30,0,6.3); c.fill(); c.strokeStyle='#222'; c.lineWidth=3; c.stroke(); c.beginPath(); c.moveTo(32,32); c.lineTo(32,12); c.moveTo(32,32); c.lineTo(46,36); c.stroke(); })})); clk.position.set(9,2.2,-14.98); sAdd(clk);
-    decal(T('3年B組'),0,6,6,'rgba(60,30,10,.18)');
+    setLight({bg:0xc8b898,sky:0xfff0d8,gnd:0x7a6a50,hi:.8,si:.62,sc:0xffe8c8});
+    floorTex(pxTex(function(x){ for(var i=0;i<4;i++) for(var j=0;j<4;j++){ x.fillStyle=(i+j)%2?'#d8cfb8':'#ece4cc'; x.fillRect(i*16,j*16,16,16); } x.fillStyle='rgba(90,70,40,.18)'; for(var k=0;k<4;k++){ x.fillRect(0,k*16,64,1); x.fillRect(k*16,0,1,64); } },[20,15]));
+    walls({st:'school'});
+    addSource('chalk',-4.5,-14.4,5,.8,.95,0,{mdl:'boardcab5',stock:3});
+    addSource('eraser',4.5,-14.4,4,.8,.95,0,{mdl:'boardcab4',stock:3});
+    blk(0,-10.5,3.4,1.3,1.0,0,{mdl:'tdesk'});
+    [-6,-2.5,1].forEach(function(z){ [-14.5,-11.5,-8.5,8.5,11.5,14.5].forEach(function(x){ blk(x,z,1.1,.8,.75,0,{mdl:'combo'}); }); });
+    addSource('broom',-19.4,5,1.2,2.4,1.2,0,{mdl:'janitor',stock:2});
+    addSource('zokin',-19.2,10,1.4,2,.7,0,{mdl:'mopbucket',stock:2,ry:Math.PI/2});
+    addSource('randoseru',19.4,-7,1.2,5,1.9,0,{mdl:'lockers5',stock:3});
+    addSource('recorder',19.4,1.5,1.2,3,1.1,0,{mdl:'musiccart',stock:3});
+    addSource('milk',15,12.6,2,1.2,.95,0,{mdl:'milkcooler',stock:2,rt:18});
+    blk(-6,11.5,4,1.6,.8,0,{mdl:'cafetable'}); blk(4,11.5,4,1.6,.8,0,{mdl:'cafetable'});
     this.spawn=['broom','eraser','chalk','zokin','recorder','randoseru','milk'];
   }},
   park:{n:T('公園'),sub:T('ボール・スケボー・水鉄砲'),build:function(){
-    setLight({bg:0x8ab8d8,sky:0xdff2ff,gnd:0x4a6a3a,hi:.68,si:.6,sc:0xfff0d0});
-    floorTex(cvTex(128,128,function(x){ x.fillStyle='#6aa84a'; x.fillRect(0,0,128,128); for(var i=0;i<300;i++){ x.fillStyle=Math.random()<.5?'#5a9a3e':'#7ab85a'; x.fillRect(Math.random()*128,Math.random()*128,2,4); } },[9,7]));
-    walls({col:0x3f7a3a,band:0x2f5a2a,top:0x4f8a46,h:1.4,sh:.9});
-    patch(0,0,4,30,0xa88a62,.025); patch(0,3,40,3.2,0xa88a62,.026);
-    patch(-9,7,7,5,0xd8b878,.03); SLOWZ.push({x0:-12.5,x1:-5.5,z0:4.5,z1:9.5,k:.62});
-    [[-9,4.4,7.2,.2],[-9,9.6,7.2,.2],[-12.6,7,.2,5.4],[-5.4,7,.2,5.4]].forEach(function(a){ var b=bx(a[2],.25,a[3],0xa8743f); b.position.set(a[0],.12,a[1]); sAdd(b); });
-    addSource('shovel',-11.6,5.2,.9,.9,.45,0xff5a3a,{mdl:'bucket',stock:2});
-    tree(-17,-7); tree(-16,12,1.1); tree(17,8); tree(9,-9,.9); tree(-7,-11,.9); tree(17.5,-3);
-    blk(7,-3,1.2,4,1.6,0xff8a3a,{mdl:'slide',top:0xffd23a}); sign(T('すべり台'),'#ffd23a','#2a1d14',7,2.2,-.95,0,1.4);
-    var jg=mdlPart(MDL.pr_jungle,'m'); jg.position.set(-10.5,0,.5); sAdd(shade(jg)); solids.push({x0:-12.1,x1:-8.9,z0:-1.1,z1:2.1,kind:'prop',h:2});
-    addSource('watergun',0,-14.1,2.4,1.6,.9,0xa8b0b8,{mdl:'fountain',stock:3}); sign(T('水飲み場'),'#3a6ad0','#fff',0,1.9,-14.98,0,1.6);
-    addSource('ball',-16.5,-12,1.6,1.6,.7,0x3a6ad0,{mdl:'bin',stock:3,rt:7});
-    addSource('skate',15,-13,3,1.2,.6,0x5a5a5a,{mdl:'ramp',stock:2,rt:12,ms:.8});
-    addSource('frisbee',6,10.5,2.6,.8,.5,0x8a5a2a,{mdl:'bench',stock:2,top:0xa8743f});
-    blk(-2,10.5,2.6,.8,.5,0x8a5a2a,{mdl:'bench',top:0xa8743f});
-    addSource('feed',-4.5,13.6,1.2,1.2,1.0,0xc9a45a,{mdl:'feedbox',stock:2,rt:12});
-    addSource('bubble',15,4,2,1.4,1.0,0xff8ab8,{mdl:'kiosk',stock:3});
-    addSource('softcream',-18.6,1.5,2,4,1.7,0xf4f1e8,{mdl:'icestand',stock:1,rt:16,band:0xff7ab8});
-    sign(T('ソフト'),'#ff7ab8','#fff',-17.58,1.3,1.5,Math.PI/2,1.4);
+    setLight({bg:0x8ab8d8,sky:0xdff2ff,gnd:0x4a6a3a,hi:.7,si:.62,sc:0xfff0d0});
+    floorTex(pxTex(function(x){ x.fillStyle='#6aa84a'; x.fillRect(0,0,64,64); for(var i=0;i<260;i++){ x.fillStyle=pick(['#5a9a3e','#7ab85a','#62a246','#74b052']); x.fillRect(Math.random()*64|0,Math.random()*64|0,2,2); } },[20,15]));
+    walls({st:'park'});
+    patch(0,0,4,30,0xb89a6a,.025); patch(0,3,40,3.2,0xb89a6a,.026);
+    patch(-15,-8,9,8,0xc8743a,.027); patch(-15,-8,.15,8,0xffffff,.03); patch(-15,-4.1,9,.15,0xffffff,.03);
+    patch(-9,7,7,5,0xe0c888,.03); SLOWZ.push({x0:-12.5,x1:-5.5,z0:4.5,z1:9.5,k:.62}); blk(-9,7,7.2,5.4,.3,0,{mdl:'sandframe',nosolid:true});
+    addSource('shovel',-11.6,5.2,.9,.9,.4,0,{mdl:'bucket2',stock:2});
+    tree(-17,-1,1); tree(-16,12.5,1.1); tree(17.5,9); tree(9,-10,.9); tree(-7,-12,.9); tree(17.5,-3.5);
+    blk(7,-3,1.2,4,1.6,0,{mdl:'tubeslide'});
+    blk(-10.5,.5,3.2,3.2,2,0,{mdl:'dome'});
+    addSource('watergun',0,-14.1,2.4,1.6,1.0,0,{mdl:'drinkfountain',stock:3});
+    addSource('ball',-11,-11.5,1.4,1.4,.75,0,{mdl:'ballcart',stock:3,rt:7}); blk(-19.4,-8,.4,.4,3.0,0,{mdl:'hoop',ry:Math.PI/2});
+    addSource('skate',15,-13,3,1.2,.7,0,{mdl:'quarterpipe',stock:2,rt:12,ms:.8});
+    addSource('frisbee',6,10.6,2.6,1.6,.78,0,{mdl:'picnic',stock:2});
+    blk(-2,10.6,2.6,1.6,.78,0,{mdl:'picnic'});
+    addSource('feed',-4.5,13.6,1.2,1.0,1.06,0,{mdl:'feedsign',stock:2,rt:12});
+    addSource('bubble',15,4,2,1.4,1.0,0,{mdl:'lemonade',stock:3});
+    addSource('softcream',-18.6,1.5,2,4,2.2,0,{mdl:'icetruck',stock:1,rt:16});
+    blk(12,-6.5,.8,.6,1.0,0,{mdl:'bbq'}); blk(3,6.5,.6,.6,1.0,0,{mdl:'trashcan'}); blk(-3,-8,.4,.4,.8,0,{mdl:'hydrant'}); blk(3,-9,.3,.3,3.6,0,{mdl:'lamppost'}); blk(-3,9,.3,.3,3.6,0,{mdl:'lamppost'});
     this.spawn=['ball','frisbee','watergun','feed','bubble','shovel','softcream','skate'];
   }},
   arcade:{n:T('ゲームセンター'),sub:T('ぬいぐるみ・お菓子・ガチャ'),build:function(){
-    setLight({bg:0x0c0814,sky:0xb8aaff,gnd:0x2a1a3a,hi:.8,si:.45,sc:0xe8dcff});
-    floorTex(cvTex(128,128,function(x){ x.fillStyle='#1a1430'; x.fillRect(0,0,128,128); var pal=['#ff4ad0','#3ad8ff','#ffd23a','#5aff7a']; x.lineWidth=3; for(var i=0;i<10;i++){ x.strokeStyle=pick(pal); x.globalAlpha=.55; x.beginPath(); var sx=Math.random()*128, sy=Math.random()*128; x.moveTo(sx,sy); x.quadraticCurveTo(sx+20,sy-20,sx+30,sy+5); x.stroke(); } x.globalAlpha=1; },[8,6]));
-    walls({col:0x2a1a3a,band:0xff4ad0,top:0x3ad8ff});
-    [[-9.6,-5,1],[-8.4,-5,1],[-7.2,-5,1],[7.2,-5,1],[8.4,-5,1],[9.6,-5,1],[-9.6,5,-1],[-8.4,5,-1],[-7.2,5,-1],[7.2,5,-1],[8.4,5,-1],[9.6,5,-1]].forEach(function(a){ cabinet(a[0],a[1],a[2],pick([0x3a2a6a,0x6a2a4a,0x2a4a6a])); });
-    addSource('plush',-14.5,-13.6,5,2.4,1.0,0xff7ab8,{mdl:'crane',stock:3,top:0xffffff,ms:.8}); glass(-14.5,-13.6,5,2.4,1.0,1.6);
-    sign(T('クレーン'),'#ff4ad0','#fff',-14.5,2.9,-12.38,0,1.8,true);
-    addSource('snack',13,-14,5,1.8,1.0,0xffd23a,{mdl:'snackcase',stock:3,top:0xffffff,ms:.8}); glass(13,-14,5,1.8,1.0,1.4);
-    sign(T('おかし'),'#ffd23a','#c8372d',13,2.7,-13.08,0,1.6,true);
-    addSource('gacha',19.2,0,1.6,5,1.2,0xc8372d,{mdl:'gachas',stock:4,top:0xf4f1e8});
-    addSource('medal',-17.8,5,3,3,1.1,0xd9a521,{mdl:'medalgame',stock:3,top:0xffe88a});
-    sign(T('メダル'),'#d9a521','#2a1d14',-19.98,2.0,5,Math.PI/2,1.8,true);
-    addSource('hammer',0,13.8,4,1.6,.9,0x3a8ad0,{mdl:'mole',stock:3,top:0xffd23a}); sign(T('もぐらたたき'),'#3a8ad0','#fff',0,1.0,12.98,0,1.8,true);
-    addSource('candy',14,12.2,3,1.2,1.0,0x8a5ab0,{mdl:'candystand',stock:1,rt:16,top:0xff7ab8});
-    sign('PLAY','#120a1a','#ff4ad0',-5,2.0,-14.98,0,2,true); sign('GAME','#120a1a','#3ad8ff',5,2.0,-14.98,0,2,true);
+    setLight({bg:0x0c0814,sky:0xb8aaff,gnd:0x2a1a3a,hi:.85,si:.45,sc:0xe8dcff});
+    floorTex(pxTex(function(x){ x.fillStyle='#1a1430'; x.fillRect(0,0,64,64); var pal=['#ff4ad0','#3ad8ff','#ffd23a','#5aff7a']; for(var i=0;i<26;i++){ x.fillStyle=pick(pal); var sx=Math.random()*60|0, sy=Math.random()*60|0; x.fillRect(sx,sy,3,1); x.fillRect(sx+1,sy+1,1,2); } },[16,12]));
+    walls({st:'arcade'});
+    [[-9.6,-5,1],[-8.4,-5,1],[-7.2,-5,1],[-9.6,5,-1],[-8.4,5,-1],[-7.2,5,-1]].forEach(function(a,i){ cabinet(a[0],a[1],a[2],[0x3a2a6a,0x6a2a4a,0x2a4a6a][i%3]); });
+    [[7.2,-5,1],[8.4,-5,1],[9.6,-5,1],[7.2,5,-1],[8.4,5,-1],[9.6,5,-1]].forEach(function(a){ blk(a[0],a[1],1.1,1.0,1.4,0,{mdl:'pinball',ry:a[2]<0?Math.PI:0}); });
+    addSource('plush',-14.5,-13.6,5,2.4,1.0,0,{mdl:'clawpair',stock:3,ms:.8,fade:true});
+    addSource('snack',13,-14,5,1.8,1.0,0,{mdl:'vending',stock:3,ms:.8,fade:true});
+    addSource('gacha',19.2,0,1.6,5,1.0,0,{mdl:'capsules',stock:4,fade:true});
+    addSource('medal',-17.8,5,3,3,1.05,0,{mdl:'coinpusher',stock:3,fade:true});
+    addSource('hammer',0,13.8,4,1.6,.95,0,{mdl:'molegame',stock:3,ry:Math.PI});
+    addSource('candy',14,12.2,3,1.2,1.0,0,{mdl:'prizecounter',stock:1,rt:16,ry:Math.PI});
+    blk(0,-4.5,2.2,1.2,.85,0,{mdl:'airhockey'}); blk(-1,-12.8,2.8,2.8,1.4,0,{mdl:'skeeball'});
     neon(-14,3,-11,0xff4ad0,1.4); neon(13,3,-12,0xffd23a,1.2); neon(-8,3,0,0x3ad8ff,1.2); neon(8,3,0,0xff4ad0,1.2); neon(17,3,6,0x5aff7a,1.1); neon(-16,3,9,0xffd23a,1.1); neon(0,3,10,0x3ad8ff,1.0); neon(0,3,-10,0x8a7aff,1.0);
     this.spawn=['plush','snack','hammer','gacha','medal','candy'];
   }}
@@ -2904,6 +2895,8 @@ muted=SET.snd===2;
 var SNDL=[T('音:全部'),T('音:効果音のみ'),T('音:切')];
 function setSnd(v){ SET.snd=v; muted=v===2; if(master) master.gain.value=muted?0:1; $('btnMute').textContent=SNDL[v]; saveSet(); }
 if(!SET.name){ SET.name=T('ゲスト')+(10+Math.floor(Math.random()*90)); try{ localStorage.setItem(SETK,JSON.stringify(SET)); }catch(e){} }
+var CAML=[T('視点:背後'),T('視点:上から')];
+function setCam(top){ SET.cam=top?'top':'back'; var b=$('btnCam'); if(b) b.textContent=CAML[top?1:0]; saveSet(); }
 function saveSet(){ try{ localStorage.setItem(SETK,JSON.stringify(SET)); }catch(e){} }
 var memRec={plays:0,wins:0,kos:0,streak:0,best:0};
 function loadRec(){ try{ var s=localStorage.getItem(RECK); if(s) return JSON.parse(s); }catch(e){} return memRec; }
@@ -2920,6 +2913,7 @@ function grabPress(p){
   if(G.client&&!p.held&&!nearestPickup(p,1.5,1.15)&&!canItems(p)) toast(p.zombieT>0?T('ゾンビ化中はアイテムを持てない'):p.cn+T('はアイテムを持てない'));
 }
 window.addEventListener('keydown',function(e){
+  if(e.code==='KeyC'&&!e.repeat&&document.activeElement&&document.activeElement.tagName!=='INPUT'){ setCam(SET.cam!=='top'); }
   if(e.target&&e.target.tagName==='INPUT'){ if(e.code==='Enter'&&e.target.id==='codeIn') $('joinGo').click(); return; }
   if(/^Arrow|^Space$/.test(e.code)) e.preventDefault();
   keys[e.code]=true;
@@ -2980,6 +2974,7 @@ function readHumans(){
       padPrev[f.pad]=b.map(function(x){ return x.pressed; });
     }
     var m=Math.hypot(ix,iz); if(m>1){ ix/=m; iz/=m; }
+    if(G.behind===f){ var cy=Math.cos(G.camYaw), sy=Math.sin(G.camYaw), wx=-cy*ix-sy*iz, wz=sy*ix-cy*iz; ix=wx; iz=wz; }
     f.in.x=ix; f.in.z=iz; f.in.atkHeld=held&&G.mode==='play';
   });
 }
@@ -3403,6 +3398,8 @@ $('copyCode').addEventListener('click',function(){
 $('btnPause').addEventListener('click',togglePause); $('resume').addEventListener('click',function(){ if(NET.on&&(NET.inMatch||G.client)) $('pause').hidden=true; else togglePause(); });
 $('quit').addEventListener('click',function(){ $('pause').hidden=true; if(NET.on) leaveNet(); G.client=false; toTitle(); });
 $('btnMute').addEventListener('click',function(){ initAudio(); setSnd((SET.snd+1)%3); });
+$('btnCam').onclick=function(e){ e.stopPropagation(); setCam(SET.cam!=='top'); };
+setCam(SET.cam==='top');
 $('btnMute').textContent=SNDL[SET.snd];
 $('btnSkip').addEventListener('click',function(){ if(G.mode==='play'&&!G.client) finishMatch(); });
 $('again').addEventListener('click',afterAd(beginFight));
@@ -3500,6 +3497,9 @@ function updateCamera(dt,snap){
     else if(!(df.spT>0)){ var sp2=F.filter(function(f){ return alive(f)&&f.spT>0; }); if(sp2.length){ df=G.demoF=sp2[0]; G.demoT=4; } }
     if(df){ cx=df.x; cz=df.z; h=17*k; }
   }
+  G.behind=null;
+  if(single&&G.mode!=='demo'&&SET.cam!=='top'){ behindCam(foc[0],dt,snap); return; }
+  if(camera.fov!==42){ camera.fov=42; camera.updateProjectionMatrix(); }
   if(single){ var p=foc[0]; cx=p.x+Math.sin(p.dir)*(p.moving?1.2:0); cz=p.z+Math.cos(p.dir)*(p.moving?1.2:0); }
   if(G.zoomT>0&&G.zoomF&&alive(G.zoomF)){ G.zoomT-=dt; cx=G.zoomF.x; cz=G.zoomF.z; h*=.72; }
   cx=clamp(cx,-14,14); cz=clamp(cz,-10,8);
@@ -3511,10 +3511,43 @@ function updateCamera(dt,snap){
   if(G.shake>0){ camera.position.x+=(Math.random()-.5)*G.shake*.6; camera.position.z+=(Math.random()-.5)*G.shake*.6; }
   sun.position.set(camLook.x-8,24,camLook.z+6); sun.target.position.set(camLook.x,0,camLook.z); sun.target.updateMatrixWorld();
 }
+/* third-person camera behind the local fighter; stick/keys become camera-relative */
+var BC={yaw:0,f:null};
+function angDiff(a,b){ var d=a-b; while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI; return d; }
+function behindCam(p,dt,snap){
+  if(BC.f!==p||snap){ BC.f=p; BC.yaw=p.dir; snap=true; }
+  var d=angDiff(p.dir,BC.yaw), mv=Math.hypot(p.in.x,p.in.z);
+  if(p.moving&&Math.abs(d)<1.9) BC.yaw+=d*Math.min(1,dt*2.4*Math.max(.35,mv));
+  else if(!p.moving&&Math.abs(d)<1.2&&!(p.atkT>0)) BC.yaw+=d*Math.min(1,dt*.8);
+  G.behind=p; G.camYaw=BC.yaw;
+  var fx=Math.sin(BC.yaw), fz=Math.cos(BC.yaw), dist=G.zoomT>0?3.8:5.4, hgt=G.zoomT>0?2.3:3.1;
+  if(G.zoomT>0) G.zoomT-=dt;
+  var px=p.x-fx*dist, pz=p.z-fz*dist;
+  px=clamp(px,-19.6,19.6); pz=clamp(pz,-14.6,14.6);
+  var wantPos=new THREE.Vector3(px,hgt+p.dropY*.5,pz), wantLook=new THREE.Vector3(p.x+fx*2.6,1.15+p.dropY*.5,p.z+fz*2.6);
+  var a=snap?1:Math.min(1,dt*6);
+  camPos.lerp(wantPos,a); camLook.lerp(wantLook,a);
+  if(camera.fov!==62){ camera.fov=62; camera.updateProjectionMatrix(); }
+  camera.position.copy(camPos); camera.lookAt(camLook);
+  G.shake=Math.max(0,G.shake-dt*1.5);
+  if(G.shake>0){ camera.position.x+=(Math.random()-.5)*G.shake*.35; camera.position.y+=(Math.random()-.5)*G.shake*.35; }
+  sun.position.set(p.x-8,24,p.z+6); sun.target.position.set(p.x,0,p.z); sun.target.updateMatrixWorld();
+}
+function segHitsBox(ax,az,bx,bz,b,pad){
+  var x0=b.x0-pad,x1=b.x1+pad,z0=b.z0-pad,z1=b.z1+pad, t0=0,t1=1, dx=bx-ax, dz=bz-az;
+  var ck=function(p,q){ if(p===0) return q>=0; var r=q/p; if(p<0){ if(r>t1) return false; if(r>t0) t0=r; } else { if(r<t0) return false; if(r<t1) t1=r; } return true; };
+  return ck(-dx,ax-x0)&&ck(dx,x1-ax)&&ck(-dz,az-z0)&&ck(dz,z1-az);
+}
 function updateFades(dt){
+  if(G.behind){ var bp=G.behind, cxp=camera.position.x, czp=camera.position.z;
+    SOURCES.forEach(function(s){ if(s.label) s.label.visible=Math.hypot(s.x-cxp,s.z-czp)>4.5; });
+    fades.forEach(function(fd){ var near=segHitsBox(cxp,czp,bp.x,bp.z,fd,.35)||(cxp>fd.x0-1.2&&cxp<fd.x1+1.2&&czp>fd.z0-1.2&&czp<fd.z1+1.2);
+      fd.op+=((near?.22:1)-fd.op)*Math.min(1,dt*8); fd.mats.forEach(function(m){ m.opacity=fd.op; m.depthWrite=fd.op>.9; }); });
+    return; }
+  SOURCES.forEach(function(s){ if(s.label) s.label.visible=true; });
   var hs=F.filter(function(f){ return alive(f)&&(f.local||G.mode==='demo'||(G.mode==='end'&&f===G.winF)); });
   fades.forEach(function(fd){
-    var near=false;
+    var near=false; if(fd.low){ if(fd.op<1){ fd.op=1; fd.mats.forEach(function(m){ m.opacity=1; m.depthWrite=true; }); } return; }
     for(var i=0;i<hs.length&&!near;i++){ var p=hs[i]; near=(fd.z1>p.z+.2)&&(fd.z0<p.z+4.5)&&(p.x+1.8>fd.x0)&&(p.x-1.8<fd.x1); }
     fd.op+=((near?.25:1)-fd.op)*Math.min(1,dt*8);
     fd.mats.forEach(function(m){ m.opacity=fd.op; m.depthWrite=fd.op>.9; });
