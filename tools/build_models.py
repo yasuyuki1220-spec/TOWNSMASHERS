@@ -1,0 +1,11 @@
+# Builds models.js from the Blender model scripts:  python3 tools/build_models.py
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bl_lib, models_chars, models_items, models_props
+only = sys.argv[1:]
+for f in models_chars.ALL + models_items.ALL + models_props.ALL[-5:]:
+    if not only or f.__name__ in only: f()
+import models_stages
+for f in models_stages.ALL: f()
+bl_lib.MODELS.update(models_stages.OUT)
+bl_lib.write(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'models.js'))
